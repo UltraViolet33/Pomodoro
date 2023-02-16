@@ -1,9 +1,44 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { Length } from "./components/Length";
 
 export const App = () => {
-  const [time, setTime] = useState(25);
+  const [isRunning, setIsRunning] = useState(false);
+
+  const [state, setState] = useState({
+    minutes: 25,
+    seconds: 0,
+  });
+
+  const startTimer = () => {
+    setIsRunning(!isRunning);
+  };
+
+  useEffect(() => {
+    let interval = null;
+    if (isRunning) {
+       interval = setInterval(() => {
+        const { seconds, minutes } = state;
+
+        console.log(state);
+
+        if (seconds > 0) {
+          const newState = { minutes: minutes, seconds: seconds - 1 };
+          setState(newState);
+        }
+
+        if (seconds === 0) {
+          if (minutes === 0) {
+            clearInterval(interval);
+          } else {
+            const newState = { minutes: minutes - 1, seconds: 59 };
+            setState(newState);
+          }
+        }
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [state, isRunning]);
 
   return (
     <div>
@@ -26,10 +61,15 @@ export const App = () => {
       </div>
       <div className="session-container">
         <p id="timer-label">Session</p>
-        <p id="timer-left">{time}</p>
+        <p id="timer-left">
+          {state.minutes}:
+          {state.seconds < 10 ? `0${state.seconds}` : state.seconds}
+        </p>
       </div>
       <div className="control-container">
-        <button id="start-stop">Start</button>
+        <button id="start-stop" onClick={startTimer}>
+          Start
+        </button>
         <button id="reset">Reset</button>
       </div>
     </div>
