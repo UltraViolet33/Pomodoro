@@ -12,10 +12,10 @@ export const Length = ({
   return (
     <div>
       <h3 id={labelId}>{title} Length</h3>
-      <div>
-        <div id={incrementId}>+</div>
-        <p>{lengthDuration}</p>
-        <div id={decrementId}>-</div>
+      <div className="controls-length">
+        <span id={incrementId}>+</span>
+        <span>{lengthDuration}</span>
+        <span id={decrementId}>-</span>
       </div>
     </div>
   );
