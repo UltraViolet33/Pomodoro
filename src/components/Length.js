@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 export const Length = ({
   title,
   lengthDuration,
@@ -8,18 +6,19 @@ export const Length = ({
   incrementId,
   decrementId,
   decrement,
-  increment
+  increment,
 }) => {
-  const [duration, setDuration] = useState(lengthDuration);
-
-
   return (
-    <div>
+    <div className="length-container border">
       <h3 id={labelId}>{title} Length</h3>
       <div className="controls-length">
-        <span onClick={increment} id={incrementId}>+</span>
+        <span onClick={increment} id={incrementId} className="pointer">
+          +
+        </span>
         <span id={spanId}>{lengthDuration}</span>
-        <span onClick={decrement} id={decrementId}>-</span>
+        <span onClick={decrement} id={decrementId} className="pointer">
+          -
+        </span>
       </div>
     </div>
   );

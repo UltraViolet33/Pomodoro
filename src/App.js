@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import "./App.css";
 import audioBeep from "./assets/beep.wav";
 import { Length } from "./components/Length";
+import "./App.css";
 
 export const App = () => {
   const [isRunning, setIsRunning] = useState(false);
-
   const [currentRunning, setCurrentRunning] = useState("Session");
 
   const [sessionLength, setSessionLength] = useState(25);
@@ -21,7 +20,6 @@ export const App = () => {
   };
 
   const resetTimer = () => {
-    console.log("reste");
     setCurrentRunning("Session");
     setIsRunning(false);
     setSessionLength(25);
@@ -54,7 +52,6 @@ export const App = () => {
     }
 
     setBreakLength(breakLength - 1);
-    // setState({...state, minutes: sessionLength - 1});
   };
 
   const incrementBreak = () => {
@@ -62,7 +59,6 @@ export const App = () => {
       return;
     }
     setBreakLength(breakLength + 1);
-    // setState({ ...state, minutes: sessionLength + 1 });
   };
 
   const playAudioBeep = () => {
