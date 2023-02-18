@@ -2,7 +2,7 @@
   "name": "pomodoro",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ultraviolet33.github.io/pomodoro/",
+  "homepage": "https://github-UltraViolet33.github.io/Pomodoro/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
